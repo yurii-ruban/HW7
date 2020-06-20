@@ -12,5 +12,12 @@ int main(int argc, char** argv)
   std::cout << copy << thief << world << std::endl;
   std::cout << std::endl;
 
+  std::cout << "Test inserts (char, char*, std::string, xstring): " << std::endl;
+  hello.insert(',', 5);
+  hello.insert(" beautiful", 10);
+  hello.insert(std::string("-"), hello.length());
+  hello.insert(custom::xstring("beautiful"), hello.length());
+  std::cout << hello << thief << std::endl;
+
   return 0;
 }

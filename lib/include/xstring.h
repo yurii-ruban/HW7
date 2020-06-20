@@ -17,9 +17,12 @@ namespace custom
     xstring(xstring&& other);
     ~xstring();
 
+    /* Inserts value in certain position.
+     * Adds the value to the end of the string
+     * if position is bigger than size */
     void insert(const char c, size_t pos);
     void insert(const char* str, size_t pos);
-    void insert(const std::string, size_t pos);
+    void insert(const std::string str, size_t pos);
     void insert(const xstring str, size_t pos);
 
     void append(const char c);
