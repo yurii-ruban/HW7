@@ -18,6 +18,16 @@ int main(int argc, char** argv)
   hello.insert(std::string("-"), hello.length());
   hello.insert(custom::xstring("beautiful"), hello.length());
   std::cout << hello << thief << std::endl;
+  std::cout << std::endl;
+
+  std::cout << "Test appends (char, char*, std::string, xstring): )" << std::endl;
+  custom::xstring origin;
+  origin.append('I');
+  origin.append(" am");
+  origin.append(std::string(" The"));
+  origin.append(custom::xstring(" Matrix"));
+  std::cout << origin << std::endl;
+  std::cout << std::endl;
 
   return 0;
 }

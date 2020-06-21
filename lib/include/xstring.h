@@ -27,7 +27,7 @@ namespace custom
 
     void append(const char c);
     void append(const char* str);
-    void append(const std::string str);
+    void append(const std::string& str);
     void append(const xstring& str);
 
     void remove(size_t start, size_t end, const char c);
