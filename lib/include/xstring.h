@@ -17,31 +17,40 @@ namespace custom
     xstring(xstring&& other);
     ~xstring();
 
-    /* Inserts value in certain position.
-     * Adds the value to the end of the string
+    /* Insert value in certain position.
+     * Add the value to the end of the string
      * if position is bigger than size */
     void insert(const char c, size_t pos);
     void insert(const char* str, size_t pos);
     void insert(const std::string str, size_t pos);
     void insert(const xstring str, size_t pos);
 
+    /* Add value in the end of the string.*/
     void append(const char c);
     void append(const char* str);
     void append(const std::string& str);
     void append(const xstring& str);
 
-    void remove(size_t start, size_t end, const char c);
-    void remove(size_t start, size_t end, const char* str);
-    void remove(size_t start, size_t end, const std::string str);
-    void remove(size_t start, size_t end, const xstring& str);
+    /* Remove value from certain position.
+     * Do nothing when the value wasn't found at the position */
+    void remove(const char c, size_t pos);
+    void remove(const char* str, size_t pos);
+    void remove(const std::string& str, size_t pos);
+    void remove(const xstring& str, size_t pos);
 
+    /* Check value is contained in string */
     bool contains(const char c) const;
     bool contains(const char* str) const;
-    bool contains(const std::string str) const;
+    bool contains(const std::string& str) const;
     bool contains(const xstring& str) const;
 
+    /* Return size of the string */
     size_t length() const;
+
+    /* Revert the string */
     xstring reverse() const;
+
+    /* Converts xstring to std::string */
     std::string toStdString() const;
 
     xstring& operator=(const char* rhs);
@@ -51,6 +60,7 @@ namespace custom
     friend bool operator == (const xstring& lhs, const char* rhs);
     friend bool operator == (const xstring& lhs, const std::string& rhs);
     friend bool operator == (const xstring& lhs, const xstring& rhs);
+    friend xstring operator + (const xstring& lhs, const char c);
     friend xstring operator + (const xstring& lhs, const char* rhs);
     friend xstring operator + (const xstring& lhs, const std::string& rhs);
     friend xstring operator + (const xstring& lhs, const xstring& rhs);
@@ -60,7 +70,12 @@ namespace custom
    private:
     size_t m_size;
     char* m_buffer;
+
+    void prefix_function(const char* str, int* prefixes) const;
+    int findSubStr(const char* subStr) const;
   };
+
+  void swap(char& a, char& b);
 }
 
 #endif
